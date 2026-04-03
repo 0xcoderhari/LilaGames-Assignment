@@ -48,5 +48,5 @@ databases:
   - name: nakama-postgres
     databaseName: nakamadb
     user: nakamauser
-    plan: free
+    plan: starter
     region: ohio
