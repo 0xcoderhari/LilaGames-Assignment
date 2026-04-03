@@ -1,0 +1,22 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker
+.docker/
+
+# Go
+backend/**/*.so
+backend/rpc/
+backend/.cookie
+
+# Node (already covered in frontend/.gitignore but safe to include)
+node_modules/
+dist/
+.env*

@@ -1,0 +1,54 @@
+version: "1"
+
+services:
+  # ----------------------------------------
+  # 1. NAKAMA BACKEND (GO + CGO)
+  # ----------------------------------------
+  - type: web
+    name: nakama-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    # Migrate the database, then boot Nakama and bind to Render's dynamic host port via internal mapping.
+    dockerCommand: /bin/sh -ecx "/nakama/nakama migrate up --database.address $DATABASE_URL && exec /nakama/nakama --name nakama-server --database.address $DATABASE_URL --logger.level DEBUG --session.token_expiry_sec 7200 --metrics.prometheus_port 9100"
+    plan: free
+    region: ohio
+    envVars:
+      # Automatically map Render's Postgres connection string into the variable Nakama expects
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nakama-postgres
+          property: connectionString
+      # Tell Render's proxy to route traffic into Nakama's default RPC/HTTP port (7350)
+      - key: PORT
+        value: "7350"
+      
+  # ----------------------------------------
+  # 2. REACT FRONTEND (STATIC SITE)
+  # ----------------------------------------
+  - type: web
+    name: tictactoe-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    plan: free
+    region: ohio
+    envVars:
+      - key: VITE_NAKAMA_SSL
+        value: "true"
+      - key: VITE_NAKAMA_PORT
+        value: "443"
+      # You will need to replace this in the Render Dashboard after the backend service deploys and generates its URL!
+      - key: VITE_NAKAMA_HOST
+        value: "REPLACE_WITH_NAKAMA_RENDER_URL.onrender.com"
+      - key: VITE_NAKAMA_SERVER_KEY
+        value: "defaultkey"
+
+databases:
+  # ----------------------------------------
+  # 3. NATIVE POSTGRES DATABASE
+  # ----------------------------------------
+  - name: nakama-postgres
+    databaseName: nakamadb
+    user: nakamauser
+    plan: free
+    region: ohio

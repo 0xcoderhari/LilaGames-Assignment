@@ -1,0 +1,151 @@
+.app {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 20px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.nav-user {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nav-status {
+  font-size: 12px;
+}
+
+.nav-status.connected {
+  color: var(--success);
+}
+
+.nav-status.disconnected {
+  color: var(--danger);
+}
+
+.nav-btn {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+}
+
+.nav-btn:hover {
+  background: var(--bg-input);
+  color: var(--text);
+}
+
+.nav-btn.logout {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.nav-btn.logout:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 32px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card h1 {
+  font-size: 32px;
+  margin-bottom: 4px;
+  color: var(--text);
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--text);
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.card input[type="text"] {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.card input[type="text"]:focus {
+  border-color: var(--primary);
+}
+
+.card button[type="submit"],
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  transition: background 0.2s;
+}
+
+.card button[type="submit"]:hover:not(:disabled),
+.primary-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.card button[type="submit"]:disabled,
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+  text-align: center;
+}

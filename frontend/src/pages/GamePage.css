@@ -1,0 +1,186 @@
+.game-page .card {
+  max-width: 420px;
+  text-align: center;
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.game-header .player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.game-header .player.active {
+  background: var(--bg-input);
+  border: 1px solid var(--primary);
+}
+
+.game-header .mark {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.game-header .mark.x {
+  color: var(--x-color);
+}
+
+.game-header .mark.o {
+  color: var(--o-color);
+}
+
+.game-header .name {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.game-header .turn-indicator {
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+.vs {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.timer {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer.warning {
+  color: var(--warning);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto 16px;
+}
+
+.board .cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  border-radius: 12px;
+  background: var(--bg-input);
+  border: 2px solid var(--border);
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.board .cell.x-mark {
+  color: var(--x-color);
+  border-color: var(--x-color);
+}
+
+.board .cell.o-mark {
+  color: var(--o-color);
+  border-color: var(--o-color);
+}
+
+.board .cell.clickable {
+  cursor: pointer;
+}
+
+.board .cell.clickable:hover {
+  background: var(--border);
+  border-color: var(--primary-light);
+}
+
+.board .cell:disabled {
+  cursor: default;
+}
+
+.waiting-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.game-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.mode-badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.my-mark {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.game-over-card {
+  text-align: center;
+}
+
+.result-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.final-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-width: 200px;
+  margin: 0 auto 20px;
+}
+
+.final-board .cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+}
+
+.final-board .cell.x-mark {
+  color: var(--x-color);
+  border-color: var(--x-color);
+}
+
+.final-board .cell.o-mark {
+  color: var(--o-color);
+  border-color: var(--o-color);
+}
