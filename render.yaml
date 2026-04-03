@@ -31,7 +31,6 @@ services:
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
     plan: free
-    region: ohio
     envVars:
       - key: VITE_NAKAMA_SSL
         value: "true"
